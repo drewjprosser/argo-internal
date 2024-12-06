@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision: 0.29.1
+    chart: vault
+    helm:
+      releaseName: vault
+      valuesObject:
+        server:
+          ingress:
+            enabled: true
+            annotations:
+              nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+              nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+            hosts:
+              - host: vault-internal.int.prossertech.com
+                paths: ["/"]
+            tls:
+              - secretName: int-prossertech-com
+                hosts:
+                  - '*.int.prossertech.com'
+        injector:
+          enabled: false
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: vault
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

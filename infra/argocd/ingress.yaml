@@ -40,8 +40,8 @@ spec:
             name: argo-cd-argocd-server
             port:
               name: http
-    host: argocd-director.int.prossertech.com
+    host: argocd-internal.int.prossertech.com
   tls:
   - hosts:
-    - "*.director.prossertech.com"
-    secretName: prossertech-com-tls
+    - "*.int.prossertech.com"
+    secretName: int-prossertech-com

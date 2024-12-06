@@ -20,6 +20,8 @@ spec:
           value: nfs-01.int.prossertech.com
         - name: nfs.path
           value: /data/rke/external
+        - name: storageClass.defaultClass
+          value: "true"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-system

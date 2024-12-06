@@ -83,4 +83,4 @@ spec:
   tls:
   - hosts:
     - "*.int.prossertech.com"
-    secretName: prossertech-wildcard-cert
+    secretName: int-prossertech-com

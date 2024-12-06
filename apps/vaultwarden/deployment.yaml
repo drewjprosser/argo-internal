@@ -76,7 +76,7 @@ spec:
         path: "/"
         backend:
           service:
-            name: vaultwarden-svc
+            name: vaultwarden
             port: 
               number: 80
   tls:

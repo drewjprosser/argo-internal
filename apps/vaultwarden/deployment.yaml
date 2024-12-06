@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaultwarden
+  namespace: vaultwarden
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: vaultwarden
+      app.kubernetes.io/instance: vaultwarden-1
+      app.kubernetes.io/component: server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: vaultwarden
+        app.kubernetes.io/instance: vaultwarden-1
+        app.kubernetes.io/component: server
+    spec:
+      containers:
+      - name: vaultwarden
+        image: vaultwarden/server:latest
+        env:
+          - name: WEBSOCKET_ENABLED
+            value: "true"
+          - name: Domain
+            value: "https://vault.prossertech.com"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+        ports:
+          - containerPort: 80
+        volumeMounts:
+          - name:  data
+            mountPath:  /data
+      volumes:
+        - name: data
+          nfs:
+            server: nfs-01.int.prossertech.com
+            path: /data/rke/vaultwarden/data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vaultwarden
+  namespace: vaultwarden
+spec:
+  selector:
+    app.kubernetes.io/name: vaultwarden
+    app.kubernetes.io/instance: vaultwarden-1
+    app.kubernetes.io/component: server
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vaultwarden-https
+  namespace: vaultwarden
+  labels:
+    name: vaultwarden-https
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: vaultwarden.int.prossertech.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: vaultwarden-svc
+            port: 
+              number: 80
+  tls:
+  - hosts:
+    - "*.int.prossertech.com"
+    secretName: prossertech-wildcard-cert

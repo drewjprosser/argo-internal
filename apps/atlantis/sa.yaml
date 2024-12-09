@@ -3,7 +3,7 @@ kind: ClusterRoleBinding
 metadata:
   creationTimestamp: "2024-12-09T14:14:47Z"
   name: oidc-reviewer
-  resourceVersion: "915499"
+  # resourceVersion: "915499"
   uid: 92af802e-af14-4696-9f08-682c6c63ebfd
 roleRef:
   apiGroup: rbac.authorization.k8s.io

@@ -1,15 +1,19 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  creationTimestamp: "2024-12-09T14:14:47Z"
-  name: oidc-reviewer
-  # resourceVersion: "915499"
-  uid: 92af802e-af14-4696-9f08-682c6c63ebfd
+  name: role-tokenreview-binding
+  namespace: atlantis
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: system:service-account-issuer-discovery
+  name: system:auth-delegator
 subjects:
-- apiGroup: rbac.authorization.k8s.io
-  kind: Group
-  name: system:unauthenticated
+  - kind: ServiceAccount
+    name: vault-auth
+    namespace: atlantis
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vault-auth
+  namespace: atlantis

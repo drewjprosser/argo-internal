@@ -20,9 +20,6 @@ spec:
         value: "false"
       - name: secret.create
         value: "false"
-  - repoURL: https://github.com/drewjprosser/argo-internal.git
-    path: infra/csi-s3
-    targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-system

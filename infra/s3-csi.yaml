@@ -9,12 +9,20 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: default
-  source:
-    repoURL: https://yandex-cloud.github.io/k8s-csi-s3/charts
+  sources:
+  - repoURL: https://yandex-cloud.github.io/k8s-csi-s3/charts
     targetRevision: 0.42.1
     chart: csi-s3
     helm:
       releaseName: csi-s3
+      parameters:
+      - name: storageClass.create
+        value: "false"
+      - name: secret.create
+        value: "false"
+  - repoURL: https://github.com/drewjprosser/argo-internal.git
+    path: infra/csi-s3
+    targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-system

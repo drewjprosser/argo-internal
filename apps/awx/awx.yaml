@@ -7,4 +7,5 @@ spec:
   ingress_type: ingress 
   ingress_hosts: 
     - hostname: awx-internal.int.prossertech.com
+      tls_secret: int-prossertech-com
   ingress_controller: nginx

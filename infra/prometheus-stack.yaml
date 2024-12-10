@@ -17,20 +17,39 @@ spec:
     helm:
       releaseName: kube-prometheus-stack
       valuesObject: 
-        ingress:
-          enabled: "true"
-          hosts:
-          - grafana.int.prossertech.com
-          - prometheus.int.prossertech.com
-          - alertmanager.int.prossertech.com
-          paths:
-          - /
-          tls: 
-          - secretName: int-prossertech-com
+        alertmanager:
+          ingress:
+            enabled: "true"
+            hosts:
+            - alertmanager.int.prossertech.com
+            paths:
+            - /
+            tls: 
+            - secretName: int-prossertech-com
+              hosts:
+              - alertmanager.int.prossertech.com
+        grafana:
+          ingress:
+            enabled: "true"
             hosts:
             - grafana.int.prossertech.com
+            paths:
+            - /
+            tls: 
+            - secretName: int-prossertech-com
+              hosts:
+              - grafana.int.prossertech.com
+        prometheus:
+          ingress:
+            enabled: "true"
+            hosts:
             - prometheus.int.prossertech.com
-            - alertmanager.int.prossertech.com
+            paths:
+            - /
+            tls: 
+            - secretName: int-prossertech-com
+              hosts:
+              - prometheus.int.prossertech.com
   destination:
     server: "https://kubernetes.default.svc"
     namespace: prometheus-stack

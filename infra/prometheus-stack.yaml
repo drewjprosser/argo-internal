@@ -45,7 +45,7 @@ spec:
       prune: true
       selfHeal: true
   ignoreDifferences:
-  - group: ''
+  - group: external-secrets.io
     kind: ExternalSecret
     jsonPointers:
     - /spec/data

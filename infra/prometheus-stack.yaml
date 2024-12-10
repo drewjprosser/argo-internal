@@ -44,3 +44,8 @@ spec:
     automated:
       prune: true
       selfHeal: true
+  ignoreDifferences:
+  - group: ''
+    kind: ExternalSecret
+    jsonPointers:
+    - /spec/data

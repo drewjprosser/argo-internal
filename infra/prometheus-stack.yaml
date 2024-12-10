@@ -35,6 +35,9 @@ spec:
     server: "https://kubernetes.default.svc"
     namespace: prometheus-stack
   syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        pod-security.kubernetes.io/enforce: privileged
     syncOptions:
       - CreateNamespace=true
     automated:

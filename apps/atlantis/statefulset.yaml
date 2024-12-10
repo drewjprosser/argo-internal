@@ -123,10 +123,10 @@ spec:
             port: 4141
             # If using https, change this to HTTPS
             scheme: HTTP
-  volumes: 
-    - name: atlantis-terraform
-      persistentVolumeClaim: 
-        claimName: csi-s3-manual-pvc
+      volumes: 
+        - name: atlantis-terraform
+          persistentVolumeClaim: 
+            claimName: csi-s3-manual-pvc
   volumeClaimTemplates:
   - metadata:
       name: atlantis-data

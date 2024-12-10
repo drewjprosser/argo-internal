@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aws-mountpoint-s3-csi-driver
+  name: csi-s3
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -10,11 +10,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://awslabs.github.io/mountpoint-s3-csi-driver
-    targetRevision: 1.11.0
-    chart: aws-mountpoint-s3-csi-driver
+    repoURL: https://yandex-cloud.github.io/k8s-csi-s3/charts
+    targetRevision: 0.42.1
+    chart: csi-s3
     helm:
-      releaseName: aws-mountpoint-s3-csi-driver
+      releaseName: csi-s3
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-system

@@ -16,13 +16,13 @@ spec:
       name: int-prossertech-com
 
   data:
-    - conversionStrategy: None
-      match:
+    - match:
         secretKey: tls.crt
         remoteRef:
           remoteKey: /tls/int.prossertech.comTest
-    - conversionStrategy: None
-      match:
+          property: tls.crt
+    - match:
         secretKey: tls.key
         remoteRef:
           remoteKey: /tls/int.prossertech.comTest
+          property: tls.key

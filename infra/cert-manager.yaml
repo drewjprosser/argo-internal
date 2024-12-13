@@ -1,16 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager-resources
+  name: cert-manager
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  source:
-    repoURL: https://github.com/drewjprosser/argo-internal.git
+  sources:
+  - repoURL: https://github.com/drewjprosser/argo-internal.git
     targetRevision: HEAD
-    path: infra/cert-manager-resources
+    path: infra/cert-manager
+  - chart: cert-manager
+    repoURL: https://charts.jetstack.io
+    targetRevision: 1.16.2
+    helm:
+      releaseName: cert-manager
+      parameters:
+        - name: "crds.enabled"
+          value: "true"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: cert-manager

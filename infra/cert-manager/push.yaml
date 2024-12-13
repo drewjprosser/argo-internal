@@ -1,0 +1,28 @@
+---
+apiVersion: external-secrets.io/v1alpha1
+kind: PushSecret
+metadata:
+  name: pushsecret-tls 
+  namespace: cert-manager
+spec:
+  updatePolicy: Replace 
+  deletionPolicy: None 
+  refreshInterval: 1h 
+  secretStoreRefs: 
+    - name: vault-backend 
+      kind: ClusterSecretStore
+  selector:
+    secret:
+      name: int-prossertech-com
+
+  data:
+    - conversionStrategy: None
+      match:
+        secretKey: tls.crt
+        remoteRef:
+          remoteKey: /tls/int.prossertech.com-test
+    - conversionStrategy: None
+      match:
+        secretKey: tls.key
+        remoteRef:
+          remoteKey: /tls/int.prossertech.com-test

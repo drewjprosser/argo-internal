@@ -16,13 +16,13 @@ spec:
     driver: ru.yandex.s3.csi
     controllerPublishSecretRef:
       name: csi-s3-secret
-      namespace: kube-system
+      namespace: atlantis
     nodePublishSecretRef:
       name: csi-s3-secret
-      namespace: kube-system
+      namespace: atlantis
     nodeStageSecretRef:
       name: csi-s3-secret
-      namespace: kube-system
+      namespace: atlantis
     volumeAttributes:
       capacity: 10Gi
       mounter: geesefs

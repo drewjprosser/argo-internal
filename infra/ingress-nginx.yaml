@@ -20,13 +20,6 @@ spec:
           extraArgs:
             enable-ssl-passthrough:
           allowSnippetAnnotations: true
-      # parameters:
-      #   - name: "controller.ingressClassResource.default"
-      #     value: "true"
-      #   - name: "controller.extraArgs.enable-ssl-passthrough"
-      #     value: ""
-      #   - name: "controller.allowSnippetAnnotations"
-      #     value: "true"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ingress-nginx

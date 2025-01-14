@@ -44,6 +44,8 @@ spec:
               value: xforwarded
             - name: KC_PROXY
               value: "edge"
+            - name: KC_HOSTNAME
+              value: "https://keycloak-internal.int.prossertech.com"
           ports:
             - name: http
               containerPort: 8080

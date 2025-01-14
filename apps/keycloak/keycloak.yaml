@@ -38,6 +38,8 @@ spec:
               value: "admin"
             - name: KEYCLOAK_ADMIN_PASSWORD
               value: "admin"
+            - name:  PROXY_ADDRESS_FORWARDING
+              value: "true"
             - name: KC_PROXY
               value: "edge"
           ports:

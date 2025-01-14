@@ -15,6 +15,9 @@ spec:
       releaseName: ingress-nginx
       valuesObject:
         controller:
+          config:
+            use-forwarded-headers: "true"
+            forwarded-for-header: "X-Forwarded-For"
           ingressClassResource:
             default: "true"
           extraArgs:

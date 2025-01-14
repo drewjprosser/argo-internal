@@ -40,6 +40,8 @@ spec:
               value: "admin"
             - name:  PROXY_ADDRESS_FORWARDING
               value: "true"
+            - name: KC_PROXY_HEADERS
+              value: xforwarded
             - name: KC_PROXY
               value: "edge"
           ports:

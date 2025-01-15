@@ -16,6 +16,7 @@ spec:
     namespace: cnpg-system
   syncPolicy:
     syncOptions:
+      - ServerSideApply=true
       - CreateNamespace=true
     automated:
       prune: true

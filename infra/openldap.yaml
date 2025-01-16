@@ -16,16 +16,18 @@ spec:
   - repoURL: https://jp-gouin.github.io/helm-openldap/
     targetRevision: 4.3.1
     chart: openldap-stack-ha
-    valuesObject:
-      global:
-        ldapDomain: prossertech.com
-        existingSecret: openldap-secret
-      ltb-passwd:
-        enabled: false
-      phpldapadmin:
-        enabled: false
-      persistence:
-        storageClass: openebs-hostpath
+    helm:
+      releaseName: openldap-stack-ha
+      valuesObject:
+        global:
+          ldapDomain: prossertech.com
+          existingSecret: openldap-secret
+        ltb-passwd:
+          enabled: false
+        phpldapadmin:
+          enabled: false
+        persistence:
+          storageClass: openebs-hostpath
   destination:
     server: "https://kubernetes.default.svc"
     namespace: openldap

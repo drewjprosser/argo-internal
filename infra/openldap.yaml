@@ -19,6 +19,12 @@ spec:
     helm:
       releaseName: openldap
       valuesObject:
+        persistence:
+          certficate:
+            enabled: false
+        service:
+          main: 
+            type: ClusterIP
         envFrom:
         - secretRef: 
             name: openldap-secret

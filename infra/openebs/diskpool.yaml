@@ -1,0 +1,26 @@
+apiVersion: "openebs.io/v1beta2"
+kind: DiskPool
+metadata:
+  name: pool-on-internal-01
+  namespace: openebs
+spec:
+  node: internal-01
+  disks: ["uring:///dev/vdc"]
+---
+apiVersion: "openebs.io/v1beta2"
+kind: DiskPool
+metadata:
+  name: pool-on-internal-02
+  namespace: openebs
+spec:
+  node: internal-02
+  disks: ["uring:///dev/vdc"]
+---
+apiVersion: "openebs.io/v1beta2"
+kind: DiskPool
+metadata:
+  name: pool-on-internal-03
+  namespace: openebs
+spec:
+  node: internal-03
+  disks: ["uring:///dev/vdc"]

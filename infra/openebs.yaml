@@ -9,8 +9,11 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: default
-  source:
-    repoURL: https://openebs.github.io/openebs
+  sources:
+  - repoURL: https://github.com/drewjprosser/argo-internal.git
+    targetRevision: HEAD
+    path: infra/openebs
+  - repoURL: https://openebs.github.io/openebs
     targetRevision: 4.1.2
     chart: openebs
     helm:

@@ -13,28 +13,23 @@ spec:
   - repoURL: https://github.com/drewjprosser/argo-internal.git
     targetRevision: HEAD
     path: infra/openldap
-  - repoURL: https://johanneskastl.github.io/helm-charts/
-    targetRevision: 2.0.0
-    chart: openldap
-    helm:
-      releaseName: openldap
-      valuesObject:
-        persistence:
-          certficate:
-            enabled: false
-        service:
-          main: 
-            type: ClusterIP
-        envFrom:
-        - secretRef: 
-            name: openldap-secret
+  - repoURL: https://jp-gouin.github.io/helm-openldap/
+    targetRevision: 4.3.1
+    chart: openldap-ha-stack
+    valuesObject:
+      global:
+        ldapDomain: prossertech.com
+        existingSecret:
+      ltb-passwd:
+        enabled: false
+      phpldapadmin:
+        enabled: false
+      persistence:
+        storageClass: openebs-hostpath
   destination:
     server: "https://kubernetes.default.svc"
     namespace: openldap
   syncPolicy:
-    managedNamespaceMetadata:
-      labels:
-        pod-security.kubernetes.io/enforce: privileged
     syncOptions:
       - CreateNamespace=true
     automated:

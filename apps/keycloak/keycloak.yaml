@@ -1,0 +1,24 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: keycloak
+  namespace: keycloak
+spec:
+  instances: 1
+  db:
+    vendor: postgres
+    host: keycloak-postgres-rw
+    usernameSecret:
+      name: keycloak-pg-secret
+      key: username
+    passwordSecret:
+      name: keycloak-pg-secret
+      key: password
+  http:
+    tlsSecret: int-prossertech-com
+  hostname:
+    hostname: keycloak-internal.int.prossertech.com
+  proxy:
+    headers: xforwarded 
+  ingress:
+    className: nginx

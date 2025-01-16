@@ -15,11 +15,11 @@ spec:
     path: infra/openldap
   - repoURL: https://jp-gouin.github.io/helm-openldap/
     targetRevision: 4.3.1
-    chart: openldap-ha-stack
+    chart: openldap-stack-ha
     valuesObject:
       global:
         ldapDomain: prossertech.com
-        existingSecret:
+        existingSecret: openldap-secret
       ltb-passwd:
         enabled: false
       phpldapadmin:

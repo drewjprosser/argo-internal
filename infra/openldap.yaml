@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openldap
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  project: default
+  sources:
+  - repoURL: https://github.com/drewjprosser/argo-internal.git
+    targetRevision: HEAD
+    path: infra/openldap
+  - repoURL: https://openldap.github.io/openldap
+    targetRevision: 4.1.2
+    chart: openldap
+    helm:
+      releaseName: openldap
+      valuesObject:
+        envFrom:
+        - secretRef: 
+            name: openldap-secret
+        env:
+          TZ: America/Denver
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: openldap
+  syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        pod-security.kubernetes.io/enforce: privileged
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

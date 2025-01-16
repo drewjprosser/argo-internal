@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openebs
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  project: default
+  source:
+    repoURL: https://openebs.github.io/openebs
+    targetRevision: 4.1.2
+    chart: openebs
+    helm:
+      releaseName: openebs
+      valuesObject:
+        localpv-provisioner:
+          hostpathClass:
+            basePath: "/var/mnt/openebs"
+        engines:
+          local:
+            lvm:
+              enabled: false
+            zfs:
+              enabled: false
+        mayastor:
+          csi:
+            node:
+              initContainers:
+                enabled: false
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: openebs
+  syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        pod-security.kubernetes.io/enforce: privileged
+    automated:
+      prune: true
+      selfHeal: true

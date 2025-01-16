@@ -3,6 +3,7 @@ kind: StorageClass
 metadata:
   name: openebs-three-replica
 parameters:
+  fsType: xfs
   protocol: nvmf
   repl: "3"
 provisioner: io.openebs.csi-mayastor

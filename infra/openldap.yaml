@@ -14,7 +14,7 @@ spec:
     targetRevision: HEAD
     path: infra/openldap
   - repoURL: https://johanneskastl.github.io/helm-charts/
-    targetRevision: 4.1.2
+    targetRevision: 2.0.0
     chart: openldap
     helm:
       releaseName: openldap

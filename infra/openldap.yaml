@@ -30,6 +30,21 @@ spec:
             - ldapadmin-internal.int.prossertech.com
         persistence:
           storageClass: openebs-hostpath
+        customLdifFiles:
+          00-root.ldif: |
+            # Root Creation
+            dn: dc=prossertech,dc=com 
+            objectClass: dcObject
+            objectClass: organization
+            o: Prossertech
+          01-users.ldif: |
+            dn: ou=users,dc=prossertech,dc=com 
+            objectClass: organizationalUnit
+            ou: users 
+          02-groups.ldif: |
+            dn: ou=groups,dc=prossertech,dc=com 
+            objectClass: organizationalUnit
+            ou: groups
   destination:
     server: "https://kubernetes.default.svc"
     namespace: openldap

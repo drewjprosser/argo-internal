@@ -31,7 +31,7 @@ spec:
             tls:
             - secretName: int-prossertech-com
               hosts:
-                - '*.int.prossertech.com'
+                - "*.int.prossertech.com"
         persistence:
           storageClass: openebs-hostpath
         customLdifFiles:

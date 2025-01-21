@@ -28,10 +28,10 @@ spec:
           ingress:
             hosts:
             - ldapadmin-internal.int.prossertech.com
-            tls:
-            - secretName: int-prossertech-com
-              hosts:
-                - '*.int.prossertech.com'
+            # tls:
+            # - secretName: int-prossertech-com
+            #   hosts:
+            #     - '*.int.prossertech.com'
         persistence:
           storageClass: openebs-hostpath
         customLdifFiles:

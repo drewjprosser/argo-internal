@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+  labels:
+    app: keycloak
+    app.kubernetes.io/instance: keycloak
+    app.kubernetes.io/managed-by: keycloak-operator
+  name: keycloak-ingress-test
+  namespace: keycloak
+spec:
+  defaultBackend:
+    service:
+      name: keycloak-service
+      port:
+        name: https
+  ingressClassName: nginx
+  rules:
+    - host: keycloak-internal-test.int.prossertech.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: keycloak-service
+                port:
+                  name: https
+            pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - "*.int.prossertech.com"
+    secretName: int-prossertech-com

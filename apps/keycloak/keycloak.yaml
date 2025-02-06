@@ -14,11 +14,11 @@ spec:
     passwordSecret:
       name: keycloak-pg-secret
       key: password
-  http:
-    tlsSecret: int-prossertech-com
-  hostname:
-    hostname: keycloak-internal.int.prossertech.com
+  # http:
+  #   tlsSecret: int-prossertech-com
+  # hostname:
+  #   hostname: keycloak-internal.int.prossertech.com
   proxy:
     headers: xforwarded 
-  ingress:
-    className: nginx
+  # ingress:
+  #   className: nginx

@@ -17,7 +17,7 @@ spec:
         name: https
   ingressClassName: nginx
   rules:
-    - host: keycloak-internal-test.int.prossertech.com
+    - host: keycloak-internal.int.prossertech.com
       http:
         paths:
           - backend:

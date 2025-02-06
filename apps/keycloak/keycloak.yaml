@@ -16,7 +16,8 @@ spec:
       key: password
   http:
     enabled: true
-    tlsSecret: int-prossertech-com
+    httpPort: 8080
+    # tlsSecret: int-prossertech-com
   hostname:
     hostname: keycloak-internal.int.prossertech.com
   proxy:

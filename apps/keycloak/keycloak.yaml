@@ -20,5 +20,5 @@ spec:
     hostname: keycloak-internal.int.prossertech.com
   proxy:
     headers: xforwarded 
-  # ingress:
-  #   className: nginx
+  ingress:
+    enabled: false

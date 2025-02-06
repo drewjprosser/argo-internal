@@ -15,6 +15,7 @@ spec:
       name: keycloak-pg-secret
       key: password
   http:
+    enabled: true
     tlsSecret: int-prossertech-com
   hostname:
     hostname: keycloak-internal.int.prossertech.com

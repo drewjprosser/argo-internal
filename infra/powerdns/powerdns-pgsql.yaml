@@ -55,7 +55,7 @@ spec:
           value: "yes"
         - name: PDNS_webserver_address
           value: "0.0.0.0"
-        - name: PDNS_websever_allow_from
+        - name: PDNS_webserver_allow_from
           value: "127.0.0.1/32 10.0.0.0/8"
         - name: PDNS_webserver_password
           valueFrom:

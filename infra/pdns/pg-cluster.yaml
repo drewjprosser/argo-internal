@@ -1,0 +1,44 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pdns-postgres
+  namespace: pdns
+spec:
+  instances: 3
+  storage:
+    size: 5Gi
+    storageClass: openebs-hostpath
+  bootstrap:
+    initdb:
+      database: powerdns
+      owner: postgres
+      secret:
+        name: pdns-pg-secret
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: pdns-pg
+  namespace: pdns
+spec:
+  secretStoreRef:
+    name: vault-backend
+    kind: ClusterSecretStore
+  refreshInterval: 3m
+  target:
+    name: pdns-pg-secret
+    template:
+      engineVersion: v2
+      type: kubernetes.io/basic-auth
+      data:
+        username: "{{ .username }}"
+        password: "{{ .password }}"
+  data:
+  - secretKey: username
+    remoteRef:
+      key: /pdns/postgres
+      property: username
+  - secretKey: password
+    remoteRef:
+      key: /pdns/postgres
+      property: password

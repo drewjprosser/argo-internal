@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pdns
+  name: powerdns
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -13,7 +13,7 @@ spec:
     path: infra/pdns
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: pdns
+    namespace: powerdns
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

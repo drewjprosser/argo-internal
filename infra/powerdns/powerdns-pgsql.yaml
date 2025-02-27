@@ -66,7 +66,7 @@ spec:
           value: "anonymous"
         - name: PDNS_dnsupdate
           value: "yes"
-        - name: PDNS_allow_dns_update_from
+        - name: PDNS_allow_dnsupdate_from
           value: "10.0.0.0/8"
         resources:
           limits:

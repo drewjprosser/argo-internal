@@ -1,21 +1,21 @@
-# apiVersion: postgresql.cnpg.io/v1
-# kind: Cluster
-# metadata:
-#   name: pdns-postgres
-#   namespace: pdns
-# spec:
-#   instances: 3
-#   storage:
-#     size: 5Gi
-#     storageClass: openebs-hostpath
-#   superuserSecret: 
-#     name: pdns-pg-secret
-#   bootstrap:
-#     initdb:
-#       database: powerdns
-#       owner: postgres
-#       secret:
-#         name: pdns-pg-secret
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pdns-postgres
+  namespace: pdns
+spec:
+  instances: 3
+  storage:
+    size: 5Gi
+    storageClass: openebs-hostpath
+  superuserSecret: 
+    name: pdns-pg-secret
+  bootstrap:
+    initdb:
+      database: powerdns
+      owner: postgres
+      secret:
+        name: pdns-pg-secret
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret

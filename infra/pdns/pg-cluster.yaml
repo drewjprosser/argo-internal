@@ -15,6 +15,7 @@ spec:
       secret:
         name: pdns-pg-secret
       postInitSQL:
+      - CREATE USER pdnsadmin
       - CREATE DATABASE pdnsadmin
       - ALTER DATABASE pdnsadmin OWNER TO pdnsadmin
   managed:

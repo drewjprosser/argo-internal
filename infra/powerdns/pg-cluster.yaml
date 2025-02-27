@@ -1,7 +1,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: pdns-postgres
+  name: powerdns-postgres
   namespace: powerdns
 spec:
   instances: 3
@@ -36,7 +36,7 @@ spec:
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: pdns-pg
+  name: powerdns-pg
   namespace: powerdns
 spec:
   secretStoreRef:
@@ -64,7 +64,7 @@ spec:
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: pdnsadmin-pg
+  name: powerdnsadmin-pg
   namespace: powerdns
 spec:
   secretStoreRef:

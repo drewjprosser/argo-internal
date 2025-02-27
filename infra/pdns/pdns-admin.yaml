@@ -78,7 +78,7 @@ metadata:
     app.kubernetes.io/component: admin
   name: pdns-admin-pvc
 spec:
-  storageClass: openebs-three-replica
+  storageClassName: openebs-three-replica
   accessModes:
   - ReadWriteMany
   resources:

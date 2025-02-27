@@ -39,11 +39,11 @@ spec:
         - name: PDNS_ADMIN_SQLA_DB_PORT
           value: "5432"
         - name: PDNS_ADMIN_SQLA_DB_USER
-          value: "postgres"
+          value: "pdnsadmin"
         - name: PDNS_ADMIN_SQLA_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: pdns-pg-secret
+              name: pdnsadmin-pg-secret
               key: password
         - name: PDNS_ADMIN_SQLA_DB_NAME
           value: "pdnsadmin"

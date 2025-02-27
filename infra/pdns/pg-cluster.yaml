@@ -1,21 +1,31 @@
-# apiVersion: postgresql.cnpg.io/v1
-# kind: Cluster
-# metadata:
-#   name: pdns-postgres
-#   namespace: pdns
-# spec:
-#   instances: 3
-#   storage:
-#     size: 5Gi
-#     storageClass: openebs-hostpath
-#   superuserSecret: 
-#     name: pdns-pg-secret
-#   # bootstrap:
-#   #   initdb:
-#   #     database: powerdns
-#   #     owner: powerdns
-#   #     secret:
-#   #       name: pdns-pg-secret
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pdns-postgres
+  namespace: pdns
+spec:
+  instances: 3
+  storage:
+    size: 5Gi
+    storageClass: openebs-hostpath
+  bootstrap:
+    initdb:
+      database: powerdns
+      owner: powerdns
+      secret:
+        name: pdns-pg-secret
+      postInitSQL:
+      - CREATE DATABASE pdnsadmin
+      - ALTER DATABASE pdnsadmin OWNER TO pdnsadmin
+  managed:
+    roles:
+    - name: pdnsadmin
+      ensure: present 
+      login: true
+      passwordSecret:
+        name: pdnsadmin-pg-secret
+
+
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -39,8 +49,36 @@ spec:
   - secretKey: username
     remoteRef:
       key: /pdns/postgres
-      property: username
+      property: pdnsUsername
   - secretKey: password
     remoteRef:
       key: /pdns/postgres
-      property: password
+      property: pdnsPassword
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: pdnsadmin-pg
+  namespace: pdns
+spec:
+  secretStoreRef:
+    name: vault-backend
+    kind: ClusterSecretStore
+  refreshInterval: 3m
+  target:
+    name: pdnsadmin-pg-secret
+    template:
+      engineVersion: v2
+      type: kubernetes.io/basic-auth
+      data:
+        username: "{{ .username }}"
+        password: "{{ .password }}"
+  data:
+  - secretKey: username
+    remoteRef:
+      key: /pdns/postgres
+      property: pdnsAdminUsername
+  - secretKey: password
+    remoteRef:
+      key: /pdns/postgres
+      property: pdnsAdminPassword

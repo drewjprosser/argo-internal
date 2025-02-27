@@ -124,6 +124,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: admin-dashboard-pdns
+            name: admin-dashboard-powerdns
             port: 
               number: 80

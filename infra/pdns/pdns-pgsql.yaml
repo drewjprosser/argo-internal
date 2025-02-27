@@ -37,7 +37,7 @@ spec:
         - name: PDNS_gpgsql_password
           valueFrom:
             secretKeyRef:
-              key: pg-password
+              key: password
               name: pdns-pg-secret
         - name: PDNS_gpgsql_dbname
           value: powerdns

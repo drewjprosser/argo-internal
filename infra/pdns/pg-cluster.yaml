@@ -20,8 +20,15 @@ spec:
       - ALTER DATABASE pdnsadmin OWNER TO pdnsadmin
   managed:
     roles:
+    - name: powerdns
+      ensure: present 
+      createdb: true
+      login: true
+      passwordSecret:
+        name: pdns-pg-secret
     - name: pdnsadmin
       ensure: present 
+      createdb: true
       login: true
       passwordSecret:
         name: pdnsadmin-pg-secret

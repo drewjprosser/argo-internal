@@ -137,7 +137,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: powerdnsapi.int.prossertech.com
+  - host: pdnsapi.int.prossertech.com
     http:
       paths:
       - pathType: Prefix

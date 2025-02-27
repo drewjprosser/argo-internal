@@ -130,3 +130,7 @@ spec:
             name: admin-dashboard-powerdns
             port: 
               number: 80
+  tls:
+  - hosts:
+    - "*.int.prossertech.com"
+    secretName: int-prossertech-com

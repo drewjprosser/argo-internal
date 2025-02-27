@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/part-of: powerdns
     app.kubernetes.io/component: admin
   name: pdns-admin
+  namespace: powerdns
 spec:
   replicas: 1
   selector:
@@ -79,6 +80,7 @@ metadata:
     app.kubernetes.io/part-of: powerdns
     app.kubernetes.io/component: admin
   name: pdns-admin-pvc
+  namespace: powerdns
 spec:
   accessModes:
   - ReadWriteMany
@@ -94,6 +96,7 @@ metadata:
     app.kubernetes.io/part-of: powerdns
     app.kubernetes.io/component: admin
   name: admin-dashboard-pdns
+  namespace: powerdns
 spec:
   type: ClusterIP
   ports:
@@ -106,6 +109,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: pdns-admin-ingress
+  namespace: powerdns
   labels:
     app.kubernetes.io/name: pdns-admin-ingress
     app.kubernetes.io/part-of: powerdns

@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/part-of: powerdns
     app.kubernetes.io/component: admin
   name: pdns-primary
+  namespace: powerdns
 spec:
   replicas: 1
   selector:
@@ -92,6 +93,7 @@ metadata:
     app.kubernetes.io/part-of: powerdns
     app.kubernetes.io/component: dns
   name: pdns-dns
+  namespace: powerdns
   annotations:
     lbipam.cilium.io/ips: "10.1.20.254"
 spec:

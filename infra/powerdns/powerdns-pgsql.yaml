@@ -150,7 +150,7 @@ apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: pdns-secret
-  namespace: pdns
+  namespace: powerdns
 spec:
   secretStoreRef:
     name: vault-backend

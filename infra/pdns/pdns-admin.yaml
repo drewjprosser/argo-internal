@@ -32,6 +32,8 @@ spec:
         - containerPort: 8080
           protocol: TCP
         env:
+        - name: PDNS_ADMIN_SQLA_DB_TYPE
+          value: postgres
         - name: PDNS_ADMIN_SQLA_DB_HOST
           value: "pdns-postgres-rw"
         - name: PDNS_ADMIN_SQLA_DB_PORT

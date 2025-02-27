@@ -30,7 +30,7 @@ spec:
             fieldRef:
               fieldPath: spec.nodeName
         - name: PDNS_gpgsql_host
-          value: pdns-postgres-rw
+          value: powerdns-postgres-rw
         - name: PDNS_gpgsql_port
           value: "5432"
         - name: PDNS_gpgsql_user

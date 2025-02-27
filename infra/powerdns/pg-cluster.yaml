@@ -1,7 +1,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: pdns-postgres
+  name: powerdns-postgres
   namespace: powerdns
 spec:
   instances: 3

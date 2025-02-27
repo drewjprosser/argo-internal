@@ -162,8 +162,8 @@ spec:
     template:
       engineVersion: v2
       data:
-        apiKey: "{{ .accessKeyID }}"
-        webserverPassword: "{{ .secretAccessKey }}"
+        apiKey: "{{ .apiKey }}"
+        webserverPassword: "{{ .webserverPassword }}"
 
   data:
   - secretKey: apiKey

@@ -10,6 +10,6 @@ spec:
   - int.prossertech.com 
   - "*.int.prossertech.com"
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt-prod
     kind: ClusterIssuer
     

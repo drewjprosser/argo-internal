@@ -13,7 +13,7 @@ spec:
       kind: ClusterSecretStore
   selector:
     secret:
-      name: int-prossertech-com
+      name: int-prossertech-comNew
 
   data:
     - match:

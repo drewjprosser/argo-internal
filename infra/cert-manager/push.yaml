@@ -19,10 +19,10 @@ spec:
     - match:
         secretKey: tls.crt
         remoteRef:
-          remoteKey: /tls/int.prossertech.comTest
+          remoteKey: /tls/int.prossertech.com
           property: tls.crt
     - match:
         secretKey: tls.key
         remoteRef:
-          remoteKey: /tls/int.prossertech.comTest
+          remoteKey: /tls/int.prossertech.com
           property: tls.key

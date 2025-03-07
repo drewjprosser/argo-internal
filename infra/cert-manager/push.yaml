@@ -13,16 +13,16 @@ spec:
       kind: ClusterSecretStore
   selector:
     secret:
-      name: int-prossertech-comNew
+      name: int-prossertech-com
 
   data:
     - match:
         secretKey: tls.crt
         remoteRef:
-          remoteKey: /tls/int.prossertech.com
+          remoteKey: /tls/int.prossertech.comNew
           property: tls.crt
     - match:
         secretKey: tls.key
         remoteRef:
-          remoteKey: /tls/int.prossertech.com
+          remoteKey: /tls/int.prossertech.comNew
           property: tls.key

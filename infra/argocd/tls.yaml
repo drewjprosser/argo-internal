@@ -19,10 +19,10 @@ spec:
   data:
   - secretKey: crt
     remoteRef:
-      key: /tls/int.prossertech.com
+      key: /tls/int.prossertech.comNew
       property: crt
   - secretKey: key
     remoteRef:
-      key: /tls/int.prossertech.com
+      key: /tls/int.prossertech.comNew
       property: key
     

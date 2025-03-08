@@ -1,10 +1,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: int-prossertech-com
+  name: int-prossertech-com-prod
   namespace: cert-manager
 spec:
-  secretName: int-prossertech-com
+  secretName: int-prossertech-com-prod
   commonName: "*.int.prossertech.com"
   dnsNames:
   - int.prossertech.com 

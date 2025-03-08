@@ -20,11 +20,11 @@ spec:
   - secretKey: crt
     remoteRef:
       key: /tls/int.prossertech.comNew
-      property: crt
+      property: tls.crt
   - secretKey: key
     remoteRef:
       key: /tls/int.prossertech.comNew
-      property: key
+      property: tls.key
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -47,9 +47,9 @@ spec:
   data:
   - secretKey: crt
     remoteRef:
-      key: /tls/int.prossertech.com
-      property: crt
+      key: /tls/int.prossertech.comNew
+      property: tls.crt
   - secretKey: key
     remoteRef:
-      key: /tls/int.prossertech.com
-      property: key
+      key: /tls/int.prossertech.comNew
+      property: tls.key

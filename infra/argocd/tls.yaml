@@ -20,9 +20,9 @@ spec:
   - secretKey: crt
     remoteRef:
       key: /tls/int.prossertech.comNew
-      property: crt
+      property: tls.crt
   - secretKey: key
     remoteRef:
       key: /tls/int.prossertech.comNew
-      property: key
+      property: tls.key
     

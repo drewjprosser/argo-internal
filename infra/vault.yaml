@@ -24,7 +24,7 @@ spec:
               - host: vault-internal.int.prossertech.com
                 paths: ["/"]
             tls:
-              - secretName: int-prossertech-com
+              - secretName: int-prossertech-com-vault
                 hosts:
                   - '*.int.prossertech.com'
         injector:
